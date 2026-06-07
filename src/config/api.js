@@ -1,0 +1,1 @@
+export const API ="https://luxoree-backend2.onrender.com"
