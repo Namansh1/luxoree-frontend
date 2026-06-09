@@ -1,9 +1,9 @@
-import { motion } from "framer-motion"
-import { products } from "../data/products"
-import { useCart } from "../context/CartContext"
+import { motion } from "framer-motion";
+import { products } from "../Data/Products";
+import { useCart } from "../Context/CartContext";
 
 export default function Shop() {
-  const { addToCart } = useCart()
+  const { addToCart } = useCart();
 
   return (
     <div>
@@ -24,12 +24,10 @@ export default function Shop() {
             <h4>₹{p.price}</h4>
 
             {/* ONLY CART BUTTON */}
-            <button onClick={() => addToCart(p)}>
-              Add to Cart 🛒
-            </button>
+            <button onClick={() => addToCart(p)}>Add to Cart 🛒</button>
           </motion.div>
         ))}
       </div>
     </div>
-  )
+  );
 }

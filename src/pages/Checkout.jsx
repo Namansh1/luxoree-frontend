@@ -1,46 +1,46 @@
-import { useState } from "react"
-import { useCart } from "../context/CartContext"
+import { useState } from "react";
+import { useCart } from "../Context/CartContext";
 
 export default function Checkout() {
-  const { cart } = useCart()
+  const { cart } = useCart();
 
-  const [name, setName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [address, setAddress] = useState("")
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
 
   const total = (cart || []).reduce(
     (sum, item) => sum + item.price * (item.qty || 1),
-    0
-  )
+    0,
+  );
 
   const placeOrder = () => {
     if (!name || !phone || !address) {
-      alert("Please fill all details")
-      return
+      alert("Please fill all details");
+      return;
     }
 
-    let message = `🛍️ *NEW ORDER - LUXOREE*\n\n`
+    let message = `🛍️ *NEW ORDER - LUXOREE*\n\n`;
 
-    message += `👤 Name: ${name}\n`
-    message += `📞 Phone: ${phone}\n`
-    message += `🏠 Address: ${address}\n\n`
+    message += `👤 Name: ${name}\n`;
+    message += `📞 Phone: ${phone}\n`;
+    message += `🏠 Address: ${address}\n\n`;
 
     cart.forEach((item, i) => {
       message += `${i + 1}. ${item.name} x ${item.qty || 1} = ₹${
         item.price * (item.qty || 1)
-      }\n`
-    })
+      }\n`;
+    });
 
-    message += `\n💰 Total: ₹${total}\n`
-    message += `\n📦 Please confirm order`
+    message += `\n💰 Total: ₹${total}\n`;
+    message += `\n📦 Please confirm order`;
 
-    const adminNumber = "918619499422"
+    const adminNumber = "918619499422";
 
     window.open(
       `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`,
-      "_blank"
-    )
-  }
+      "_blank",
+    );
+  };
 
   return (
     <div className="checkout">
@@ -76,5 +76,5 @@ export default function Checkout() {
         🟢 Place Order on WhatsApp
       </button>
     </div>
-  )
+  );
 }
